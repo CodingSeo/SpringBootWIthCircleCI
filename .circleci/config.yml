@@ -1,11 +1,9 @@
 version: 2.1
 
-jobs:
+orbs:
+  gradle: circleci/gradle@3.0.0
+
+workflows:
   checkout-and-build:
-    docker:
-      - image: cimg/openjdk:17.0
-    resource_class: small
-    steps:
-      - checkout
-      - run:
-          command: ./gradlew build
+    jobs:
+      - gradle/run
